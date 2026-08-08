@@ -53,7 +53,6 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
               <div>
                 <div className="flex items-center space-x-2">
                   <span className="font-orbitron font-black text-2xl tracking-wider text-white">SS CARBON</span>
-                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#8BC34A] animate-pulse"></span>
                 </div>
                 <p className="text-[11px] uppercase font-rajdhani font-semibold tracking-widest text-[#8BC34A]">Shri Shyam & Company</p>
               </div>

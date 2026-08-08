@@ -81,7 +81,6 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
           
           {/* Trust Badge Header */}
           <div className="inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full bg-[#1C1C1C]/90 border border-[#8BC34A]/40 backdrop-blur-md mb-8 shadow-2xl animate-fadeIn">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#8BC34A] animate-ping" />
             <span className="font-orbitron text-xs font-bold uppercase tracking-widest text-white">
               Shri Shyam & Company Industrial Supply Desk
             </span>
