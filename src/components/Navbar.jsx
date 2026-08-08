@@ -34,37 +34,43 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'py-3 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-[#262626] shadow-2xl' : 'py-5 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent'
+      isScrolled 
+        ? 'py-2.5 sm:py-3 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-[#262626] shadow-2xl' 
+        : 'py-3.5 sm:py-5 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent'
     }`}>
-      {/* Full Width Wide Desktop Header Bar */}
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24">
+      {/* Full Width Responsive Header Bar */}
+      <div className="w-full px-4 sm:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center justify-between">
           
           {/* Logo Section & Navigation Container */}
-          <div className="flex items-center space-x-12 xl:space-x-20">
-            {/* Brand Logo */}
+          <div className="flex items-center space-x-6 lg:space-x-12 xl:space-x-20">
+            {/* Brand Logo with Metallic Emblem Image */}
             <div 
               onClick={() => handleNavClick('home')}
-              className="flex items-center space-x-3.5 cursor-pointer group shrink-0"
+              className="flex items-center space-x-3 cursor-pointer group shrink-0"
             >
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#1C1C1C] to-[#0A0A0A] border-2 border-[#8BC34A]/50 flex items-center justify-center shadow-lg group-hover:border-[#8BC34A] group-hover:scale-105 transition-all">
-                <span className="font-orbitron font-black text-2xl text-[#8BC34A] tracking-tighter">SS</span>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#1C1C1C] to-[#0A0A0A] border-2 border-[#8BC34A]/50 flex items-center justify-center p-1 shadow-lg group-hover:border-[#8BC34A] group-hover:scale-105 transition-all">
+                <img
+                  src="/assets/brand_logo.png"
+                  alt="SS Carbon Metallic Logo"
+                  className="w-full h-full object-contain filter drop-shadow-md"
+                />
               </div>
               <div>
                 <div className="flex items-center space-x-2">
-                  <span className="font-orbitron font-black text-2xl tracking-wider text-white">SS CARBON</span>
+                  <span className="font-orbitron font-black text-xl sm:text-2xl tracking-wider text-white">SS CARBON</span>
                 </div>
-                <p className="text-[11px] uppercase font-rajdhani font-semibold tracking-widest text-[#8BC34A]">Shri Shyam & Company</p>
+                <p className="text-[10px] sm:text-[11px] uppercase font-rajdhani font-semibold tracking-widest text-[#8BC34A]">Shri Shyam & Company</p>
               </div>
             </div>
 
-            {/* Generous Space Before Home & Desktop Nav Links */}
-            <nav className="hidden lg:flex items-center space-x-2 bg-[#141414]/90 p-2 rounded-full border border-[#262626] shadow-inner ml-8 xl:ml-16">
+            {/* Space Before Home & Desktop Nav Links */}
+            <nav className="hidden lg:flex items-center space-x-1.5 bg-[#141414]/90 p-1.5 rounded-full border border-[#262626] shadow-inner ml-6 xl:ml-16">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-orbitron font-bold uppercase tracking-wider transition-all duration-200 ${
+                  className={`px-4 xl:px-5 py-2 rounded-full text-xs font-orbitron font-bold uppercase tracking-wider transition-all duration-200 ${
                     activePage === item.id
                       ? 'bg-[#8BC34A] text-black shadow-lg shadow-[#8BC34A]/25 scale-105'
                       : 'text-gray-300 hover:text-white hover:bg-[#262626]'
@@ -76,54 +82,55 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
             </nav>
           </div>
 
-          {/* Right Action Desk & Phone */}
-          <div className="hidden lg:flex items-center space-x-6">
+          {/* Right Action Desk & Phone (Desktop) */}
+          <div className="hidden lg:flex items-center space-x-5">
             <a 
               href="tel:+919810000000" 
-              className="flex items-center space-x-2.5 text-xs font-orbitron font-semibold text-gray-300 hover:text-[#8BC34A] transition-colors bg-[#141414] px-4 py-2.5 rounded-full border border-[#262626]"
+              className="flex items-center space-x-2 text-xs font-orbitron font-semibold text-gray-300 hover:text-[#8BC34A] transition-colors bg-[#141414] px-3.5 py-2 rounded-full border border-[#262626]"
             >
-              <PhoneCall className="w-4 h-4 text-[#8BC34A]" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#8BC34A]" />
               <span>Bulk Desk: +91 98100 XXXXX</span>
             </a>
             
             <button
               onClick={onOpenQuote}
-              className="relative group px-6 py-3 rounded-xl bg-gradient-to-r from-[#8BC34A] to-[#689F38] text-black font-orbitron font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-[#8BC34A]/20 hover:shadow-[#8BC34A]/40 hover:scale-105 transition-all flex items-center space-x-2 active:scale-95 shrink-0"
+              className="relative group px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#8BC34A] to-[#689F38] text-black font-orbitron font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-[#8BC34A]/20 hover:shadow-[#8BC34A]/40 hover:scale-105 transition-all flex items-center space-x-1.5 active:scale-95 shrink-0"
             >
               <span>Get Instant Quote</span>
               <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center space-x-3">
+          {/* Mobile Menu Action Bar */}
+          <div className="flex lg:hidden items-center space-x-2.5">
             <button
               onClick={onOpenQuote}
-              className="px-3.5 py-2 rounded-lg bg-[#8BC34A] text-black font-orbitron font-bold text-xs uppercase tracking-wider"
+              className="px-3 py-1.5 rounded-lg bg-[#8BC34A] text-black font-orbitron font-bold text-[11px] uppercase tracking-wider shadow-md active:scale-95"
             >
-              Quote
+              Get Quote
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-[#1C1C1C] border border-[#262626] text-gray-300 hover:text-white"
+              className="p-2 rounded-xl bg-[#1C1C1C] border border-[#262626] text-gray-200 hover:text-white active:scale-95"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-3 bg-[#0A0A0A]/95 border-b border-[#262626] backdrop-blur-xl px-6 pt-4 pb-6 space-y-3">
+        <div className="lg:hidden mt-2 bg-[#0A0A0A]/98 border-b border-[#262626] backdrop-blur-2xl px-5 pt-3 pb-6 space-y-2.5 animate-fadeIn">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`w-full text-left px-4 py-3 rounded-xl text-xs font-orbitron font-bold uppercase tracking-wider flex items-center justify-between ${
+              className={`w-full text-left px-4 py-3 rounded-xl text-xs font-orbitron font-bold uppercase tracking-wider flex items-center justify-between transition-colors ${
                 activePage === item.id
-                  ? 'bg-[#8BC34A] text-black font-bold'
+                  ? 'bg-[#8BC34A] text-black font-extrabold shadow-md'
                   : 'text-gray-300 hover:bg-[#1C1C1C]'
               }`}
             >
@@ -131,15 +138,22 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
               {activePage === item.id && <Zap className="w-4 h-4 text-black" />}
             </button>
           ))}
-          <div className="pt-3 border-t border-[#262626] flex flex-col gap-2">
+          <div className="pt-3 border-t border-[#262626] flex flex-col gap-2.5">
+            <a
+              href="tel:+919810000000"
+              className="w-full py-2.5 px-4 rounded-xl bg-[#1C1C1C] border border-[#262626] text-gray-300 font-orbitron font-semibold text-xs flex items-center justify-center space-x-2"
+            >
+              <PhoneCall className="w-3.5 h-3.5 text-[#8BC34A]" />
+              <span>Call Desk: +91 98100 XXXXX</span>
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuote();
               }}
-              className="w-full py-3.5 rounded-xl bg-[#8BC34A] text-black font-orbitron font-bold text-xs uppercase tracking-widest text-center"
+              className="w-full py-3 rounded-xl bg-[#8BC34A] text-black font-orbitron font-extrabold text-xs uppercase tracking-widest text-center shadow-lg shadow-[#8BC34A]/20"
             >
-              Request Bulk Pricing
+              Request Commercial Quote
             </button>
           </div>
         </div>

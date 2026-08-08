@@ -18,8 +18,12 @@ export default function Footer({ setActivePage, onOpenQuote }) {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center space-x-3.5">
-              <div className="w-11 h-11 rounded-xl bg-[#141414] border border-[#8BC34A]/50 flex items-center justify-center">
-                <span className="font-orbitron font-black text-2xl text-[#8BC34A]">SS</span>
+              <div className="w-11 h-11 rounded-xl bg-[#141414] border border-[#8BC34A]/50 flex items-center justify-center p-1">
+                <img
+                  src="/assets/brand_logo.png"
+                  alt="SS Carbon Metallic Emblem"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="font-orbitron font-black text-3xl text-white tracking-wider">SS CARBON</span>
