@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PhoneCall, Menu, X, ArrowUpRight, Zap, Sun, Moon } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Zap, Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +42,7 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
           ? 'py-3.5 sm:py-5 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent'
           : 'py-3.5 sm:py-5 bg-gradient-to-b from-white via-white/85 to-transparent'
     }`}>
-      {/* Full Width Layout with Centered Tabs & Generous Margin Spacing */}
+      {/* Full Width Layout with Centered Tabs & Generous Side Whitespace */}
       <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center justify-between">
           
@@ -67,7 +67,7 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
               <p className={`text-[10px] sm:text-[11px] uppercase font-rajdhani font-bold tracking-widest ${
                 theme === 'dark' ? 'text-[#8BC34A]' : 'text-[#65A30D]'
               }`}>
-                Shri Shyam & Company
+                Shri Shyam & Co.
               </p>
             </div>
           </div>
@@ -97,8 +97,8 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
             </nav>
           </div>
 
-          {/* TOP RIGHT: Bulk Desk, Dark/Light Mode Toggle & Instant Quote */}
-          <div className="hidden lg:flex items-center space-x-4 shrink-0">
+          {/* TOP RIGHT: Theme Toggle & Get Quote CTA Only */}
+          <div className="hidden lg:flex items-center space-x-3.5 shrink-0">
             
             {/* Theme Toggle Button (Sun/Moon) */}
             <button
@@ -114,25 +114,12 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            {/* Bulk Desk Link */}
-            <a 
-              href="tel:+919810000000" 
-              className={`flex items-center space-x-2 text-xs font-orbitron font-semibold transition-colors px-3.5 py-2.5 rounded-full border ${
-                theme === 'dark'
-                  ? 'bg-[#141414] border-[#262626] text-gray-300 hover:text-[#8BC34A]'
-                  : 'bg-white border-slate-200 text-slate-700 hover:text-[#65A30D]'
-              }`}
-            >
-              <PhoneCall className={`w-3.5 h-3.5 ${theme === 'dark' ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`} />
-              <span>Bulk Desk: +91 98100 XXXXX</span>
-            </a>
-            
-            {/* Instant Quote CTA */}
+            {/* "GET QUOTE" Button */}
             <button
               onClick={onOpenQuote}
-              className="relative group px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#8BC34A] to-[#689F38] text-black font-orbitron font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-[#8BC34A]/20 hover:shadow-[#8BC34A]/40 hover:scale-105 transition-all flex items-center space-x-1.5 active:scale-95 shrink-0"
+              className="relative group px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#8BC34A] to-[#689F38] text-black font-orbitron font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-[#8BC34A]/20 hover:shadow-[#8BC34A]/40 hover:scale-105 transition-all flex items-center space-x-1.5 active:scale-95 shrink-0"
             >
-              <span>Get Instant Quote</span>
+              <span>GET QUOTE</span>
               <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
@@ -151,9 +138,9 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
             
             <button
               onClick={onOpenQuote}
-              className="px-3 py-1.5 rounded-lg bg-[#8BC34A] text-black font-orbitron font-bold text-[11px] uppercase tracking-wider shadow-md"
+              className="px-3.5 py-1.5 rounded-lg bg-[#8BC34A] text-black font-orbitron font-bold text-xs uppercase tracking-wider shadow-md"
             >
-              Get Quote
+              GET QUOTE
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -191,15 +178,6 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
             </button>
           ))}
           <div className="pt-3 border-t border-slate-200 dark:border-[#262626] flex flex-col gap-2.5">
-            <a
-              href="tel:+919810000000"
-              className={`w-full py-2.5 px-4 rounded-xl border font-orbitron font-semibold text-xs flex items-center justify-center space-x-2 ${
-                theme === 'dark' ? 'bg-[#1C1C1C] border-[#262626] text-gray-300' : 'bg-slate-100 border-slate-200 text-slate-700'
-              }`}
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-[#8BC34A]" />
-              <span>Call Desk: +91 98100 XXXXX</span>
-            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -207,7 +185,7 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote, theme, 
               }}
               className="w-full py-3 rounded-xl bg-[#8BC34A] text-black font-orbitron font-extrabold text-xs uppercase tracking-widest text-center shadow-lg shadow-[#8BC34A]/20"
             >
-              Request Commercial Quote
+              GET QUOTE
             </button>
           </div>
         </div>

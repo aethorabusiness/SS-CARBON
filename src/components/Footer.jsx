@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Mail, Phone, MapPin, ArrowUpRight, Leaf, Award } from 'lucide-react';
+import { ShieldCheck, Mail, Phone, MapPin, ArrowUpRight, Leaf, Award, Globe } from 'lucide-react';
 
 export default function Footer({ setActivePage, onOpenQuote, theme }) {
   const isDark = theme === 'dark';
@@ -29,12 +29,12 @@ export default function Footer({ setActivePage, onOpenQuote, theme }) {
               />
               <div>
                 <span className="font-orbitron font-black text-3xl text-white tracking-wider">SS CARBON</span>
-                <p className="text-xs uppercase tracking-widest text-[#8BC34A] font-bold">Shri Shyam & Company</p>
+                <p className="text-xs uppercase tracking-widest text-[#8BC34A] font-bold">Shri Shyam & Co.</p>
               </div>
             </div>
 
             <p className="text-sm text-gray-300 max-w-md leading-relaxed">
-              Premier industrial chemical and carbon product manufacturing & fuel supply enterprise. Delivering high-purity Carbon Black, Furnace Oil, Industrial Diesel, and Pigments to global bulk buyers.
+              Premier industrial chemical and carbon product manufacturing & fuel supply enterprise. Managed by RP Khunteta, Saurabh Khunteta, and Gaurav Khunteta. Delivering high-purity Carbon Black, Furnace Oil, Industrial Diesel, and Pigments.
             </p>
 
             <div className="flex items-center space-x-2 text-[#8BC34A] text-xs font-bold bg-[#8BC34A]/10 border border-[#8BC34A]/20 px-4 py-2 rounded-full w-fit">
@@ -45,7 +45,7 @@ export default function Footer({ setActivePage, onOpenQuote, theme }) {
             <div className="flex items-center space-x-6 pt-2">
               <div className="flex items-center space-x-2 text-xs text-gray-300 font-semibold">
                 <ShieldCheck className="w-4 h-4 text-[#8BC34A]" />
-                <span>ISO 9001:2015 Certified</span>
+                <span>ISO Certified</span>
               </div>
               <div className="flex items-center space-x-2 text-xs text-gray-300 font-semibold">
                 <Award className="w-4 h-4 text-[#8BC34A]" />
@@ -95,22 +95,28 @@ export default function Footer({ setActivePage, onOpenQuote, theme }) {
             <div className="space-y-3.5 text-xs">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-[#8BC34A] shrink-0 mt-0.5" />
-                <span>Shri Shyam & Company Industrial Park, Sector 5, Industrial Area, New Delhi, India</span>
+                <span>G-322 Manda II, RIICO Ind.area Jaipur | B 11 Sain Colony Kabir Marg Bani Park Jaipur</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-[#8BC34A] shrink-0" />
-                <span>+91 98100 XXXXX / +91 11 4500 XXXX</span>
+                <span>+91-9649076667 | +91-9829011870</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-[#8BC34A] shrink-0" />
-                <span>supply@sscarbon.com</span>
+                <span>sales@sscompany.in | khuntetasr@gmail.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Globe className="w-4 h-4 text-[#8BC34A] shrink-0" />
+                <a href="https://www.sscompany.in" target="_blank" rel="noopener noreferrer" className="hover:underline text-[#8BC34A] font-semibold">
+                  www.sscompany.in
+                </a>
               </div>
               
               <button
                 onClick={onOpenQuote}
                 className="mt-3 w-full py-3 px-4 rounded-xl bg-[#1C1C1C] border border-[#8BC34A]/30 text-[#8BC34A] font-orbitron text-xs font-bold uppercase tracking-wider hover:bg-[#8BC34A] hover:text-black transition-all flex items-center justify-center space-x-1.5"
               >
-                <span>Request B2B Pricing</span>
+                <span>GET QUOTE</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
@@ -120,7 +126,7 @@ export default function Footer({ setActivePage, onOpenQuote, theme }) {
 
         {/* Bottom Bar */}
         <div className="pt-10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
-          <p>© {new Date().getFullYear()} SS Carbon (Shri Shyam & Company). All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} SS Carbon (Shri Shyam & Co.). All Rights Reserved.</p>
           <div className="flex items-center space-x-8">
             <span className="hover:text-white cursor-pointer">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer">Terms of Bulk Supply</span>
