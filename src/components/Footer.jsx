@@ -1,19 +1,23 @@
 import React from 'react';
 import { ShieldCheck, Mail, Phone, MapPin, ArrowUpRight, Leaf, Award } from 'lucide-react';
 
-export default function Footer({ setActivePage, onOpenQuote }) {
+export default function Footer({ setActivePage, onOpenQuote, theme }) {
+  const isDark = theme === 'dark';
+
   const handleNavClick = (id) => {
     setActivePage(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-[#050505] border-t border-[#1C1C1C] text-gray-400 relative overflow-hidden pt-20 pb-14 w-full">
+    <footer className={`border-t relative overflow-hidden pt-20 pb-14 w-full transition-colors ${
+      isDark ? 'bg-[#050505] border-[#1C1C1C] text-gray-400' : 'bg-slate-900 border-slate-800 text-slate-300'
+    }`}>
       {/* Background Micro Glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#8BC34A]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-[1800px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-24 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-[#1C1C1C]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-[#1C1C1C] dark:border-[#1C1C1C] border-slate-800">
           
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
@@ -29,7 +33,7 @@ export default function Footer({ setActivePage, onOpenQuote }) {
               </div>
             </div>
 
-            <p className="text-sm text-gray-400 max-w-md leading-relaxed">
+            <p className="text-sm text-gray-300 max-w-md leading-relaxed">
               Premier industrial chemical and carbon product manufacturing & fuel supply enterprise. Delivering high-purity Carbon Black, Furnace Oil, Industrial Diesel, and Pigments to global bulk buyers.
             </p>
 
@@ -74,7 +78,7 @@ export default function Footer({ setActivePage, onOpenQuote }) {
             <h4 className="font-orbitron font-bold text-white text-base uppercase tracking-wider mb-5 border-l-3 border-[#8BC34A] pl-3">
               Products
             </h4>
-            <ul className="space-y-3 text-xs font-medium text-gray-400">
+            <ul className="space-y-3 text-xs font-medium text-gray-300">
               <li className="hover:text-white transition-colors cursor-pointer" onClick={() => handleNavClick('products')}>Carbon Black Powder (N220/N330)</li>
               <li className="hover:text-white transition-colors cursor-pointer" onClick={() => handleNavClick('products')}>Industrial Furnace Oil (FO 180)</li>
               <li className="hover:text-white transition-colors cursor-pointer" onClick={() => handleNavClick('products')}>Commercial Industrial Diesel</li>
@@ -115,12 +119,12 @@ export default function Footer({ setActivePage, onOpenQuote }) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div className="pt-10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
           <p>© {new Date().getFullYear()} SS Carbon (Shri Shyam & Company). All Rights Reserved.</p>
           <div className="flex items-center space-x-8">
-            <span className="hover:text-gray-300 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-gray-300 cursor-pointer">Terms of Bulk Supply</span>
-            <span className="hover:text-gray-300 cursor-pointer">Quality Guarantee</span>
+            <span className="hover:text-white cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-white cursor-pointer">Terms of Bulk Supply</span>
+            <span className="hover:text-white cursor-pointer">Quality Guarantee</span>
           </div>
         </div>
       </div>

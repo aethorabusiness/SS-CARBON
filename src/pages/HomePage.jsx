@@ -2,7 +2,7 @@ import React from 'react';
 import HeroCanvas3D from '../components/HeroCanvas3D';
 import { ArrowRight, ShieldCheck, Factory, Award, Truck, ChevronRight, Zap, Sparkles, Layers } from 'lucide-react';
 
-export default function HomePage({ setActivePage, onOpenQuote }) {
+export default function HomePage({ setActivePage, onOpenQuote, theme }) {
   const products = [
     {
       id: 'carbon-black',
@@ -65,42 +65,58 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
     }
   ];
 
+  const isDark = theme === 'dark';
+
   return (
     <div className="space-y-16 sm:space-y-28 pb-16 w-full">
       
-      {/* HERO SECTION - MOBILE WEB OPTIMIZED */}
+      {/* HERO SECTION */}
       <section className="relative min-h-[90vh] sm:min-h-[92vh] flex items-center justify-center pt-28 sm:pt-32 pb-14 sm:pb-20 overflow-hidden w-full">
         {/* 3D Particle Sphere Canvas Background */}
         <HeroCanvas3D />
 
-        {/* Ambient Dark Overlay Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-[#0A0A0A]/30 pointer-events-none z-10" />
+        {/* Ambient Overlay Gradients for Dark and Light mode */}
+        <div className={`absolute inset-0 pointer-events-none z-10 ${
+          isDark 
+            ? 'bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-[#0A0A0A]/30' 
+            : 'bg-gradient-to-t from-slate-50 via-slate-50/60 to-transparent'
+        }`} />
         <div className="absolute inset-0 bg-carbon-mesh opacity-40 pointer-events-none z-10" />
 
         <div className="relative z-20 w-full max-w-[1800px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-24 text-center">
           
           {/* Trust Badge Header */}
-          <div className="inline-flex items-center space-x-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#1C1C1C]/90 border border-[#8BC34A]/40 backdrop-blur-md mb-6 sm:mb-8 shadow-2xl animate-fadeIn max-w-full">
-            <span className="font-orbitron text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white truncate">
+          <div className={`inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full border backdrop-blur-md mb-6 sm:mb-8 shadow-xl animate-fadeIn ${
+            isDark ? 'bg-[#1C1C1C]/90 border-[#8BC34A]/40' : 'bg-white/90 border-slate-300 shadow-slate-200'
+          }`}>
+            <span className={`font-orbitron text-xs font-bold uppercase tracking-widest ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}>
               Shri Shyam & Company Industrial Supply Desk
             </span>
           </div>
 
-          {/* Main Title - Mobile Fluid Scale */}
-          <h1 className="font-orbitron font-black text-4xl sm:text-7xl lg:text-9xl tracking-tight text-white uppercase mb-4 sm:mb-6 leading-none drop-shadow-2xl">
+          {/* Main Title */}
+          <h1 className={`font-orbitron font-black text-4xl sm:text-7xl lg:text-9xl tracking-tight uppercase mb-4 sm:mb-6 leading-none drop-shadow-2xl ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             SS <span className="text-eco-gradient">CARBON</span>
           </h1>
 
           {/* Subtitle / Tagline */}
-          <p className="font-rajdhani font-bold text-xl sm:text-3xl lg:text-4xl text-gray-200 tracking-wider mb-4 sm:mb-6">
-            Less CO2. <span className="text-[#8BC34A]">More Greenary.</span>
+          <p className={`font-rajdhani font-bold text-xl sm:text-3xl lg:text-4xl tracking-wider mb-4 sm:mb-6 ${
+            isDark ? 'text-gray-200' : 'text-slate-700'
+          }`}>
+            Less CO2. <span className={isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}>More Greenary.</span>
           </p>
 
-          <p className="max-w-3xl mx-auto text-xs sm:text-base text-gray-300 font-normal leading-relaxed mb-8 sm:mb-12 px-2">
+          <p className={`max-w-3xl mx-auto text-xs sm:text-base font-normal leading-relaxed mb-8 sm:mb-12 px-2 ${
+            isDark ? 'text-gray-300' : 'text-slate-600'
+          }`}>
             India's premier B2B manufacturer and bulk supplier of high-purity Carbon Black Powder, Industrial Furnace Oil, Commercial Diesel, and Carbon Pigments for industrial plants and factories.
           </p>
 
-          {/* Hero CTAs - Mobile Responsive Stack */}
+          {/* Hero CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-5 px-4 sm:px-0">
             <button
               onClick={onOpenQuote}
@@ -112,30 +128,42 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
 
             <button
               onClick={() => setActivePage('products')}
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-xl bg-[#141414] border border-[#262626] text-white font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider hover:border-[#8BC34A] hover:bg-[#1C1C1C] transition-all flex items-center justify-center space-x-2"
+              className={`w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-xl border font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center space-x-2 ${
+                isDark 
+                  ? 'bg-[#141414] border-[#262626] text-white hover:border-[#8BC34A] hover:bg-[#1C1C1C]' 
+                  : 'bg-white border-slate-300 text-slate-900 hover:border-[#65A30D] hover:bg-slate-100 shadow-md'
+              }`}
             >
               <span>Explore Products</span>
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#8BC34A]" />
+              <ChevronRight className={`w-4 h-4 sm:w-5 sm:h-5 ${isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`} />
             </button>
           </div>
 
-          {/* Key Metrics Bar - Mobile 2-Col Grid */}
-          <div className="mt-12 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-6xl mx-auto border-t border-[#262626] pt-8 sm:pt-10">
-            <div className="p-3 sm:p-4 bg-[#121212]/80 rounded-xl sm:rounded-2xl border border-[#262626]">
-              <div className="font-orbitron font-extrabold text-xl sm:text-4xl text-[#8BC34A]">100,000+</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-400 font-bold mt-1">MT Output / Yr</div>
+          {/* Key Metrics Bar */}
+          <div className="mt-12 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-6xl mx-auto border-t border-slate-300 dark:border-[#262626] pt-8 sm:pt-10">
+            <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-colors ${
+              isDark ? 'bg-[#121212]/80 border-[#262626]' : 'bg-white/90 border-slate-200 shadow-md shadow-slate-200/50'
+            }`}>
+              <div className={`font-orbitron font-extrabold text-xl sm:text-4xl ${isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`}>100,000+</div>
+              <div className={`text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-1 ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>MT Output / Yr</div>
             </div>
-            <div className="p-3 sm:p-4 bg-[#121212]/80 rounded-xl sm:rounded-2xl border border-[#262626]">
-              <div className="font-orbitron font-extrabold text-xl sm:text-4xl text-white">500+</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-400 font-bold mt-1">B2B Factories</div>
+            <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-colors ${
+              isDark ? 'bg-[#121212]/80 border-[#262626]' : 'bg-white/90 border-slate-200 shadow-md shadow-slate-200/50'
+            }`}>
+              <div className={`font-orbitron font-extrabold text-xl sm:text-4xl ${isDark ? 'text-white' : 'text-slate-900'}`}>500+</div>
+              <div className={`text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-1 ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>B2B Factories</div>
             </div>
-            <div className="p-3 sm:p-4 bg-[#121212]/80 rounded-xl sm:rounded-2xl border border-[#262626]">
-              <div className="font-orbitron font-extrabold text-xl sm:text-4xl text-[#8BC34A]">99.8%</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-400 font-bold mt-1">ASTM Purity</div>
+            <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-colors ${
+              isDark ? 'bg-[#121212]/80 border-[#262626]' : 'bg-white/90 border-slate-200 shadow-md shadow-slate-200/50'
+            }`}>
+              <div className={`font-orbitron font-extrabold text-xl sm:text-4xl ${isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`}>99.8%</div>
+              <div className={`text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-1 ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>ASTM Purity</div>
             </div>
-            <div className="p-3 sm:p-4 bg-[#121212]/80 rounded-xl sm:rounded-2xl border border-[#262626]">
-              <div className="font-orbitron font-extrabold text-xl sm:text-4xl text-white">ISO 9001</div>
-              <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-400 font-bold mt-1">Certified Unit</div>
+            <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-colors ${
+              isDark ? 'bg-[#121212]/80 border-[#262626]' : 'bg-white/90 border-slate-200 shadow-md shadow-slate-200/50'
+            }`}>
+              <div className={`font-orbitron font-extrabold text-xl sm:text-4xl ${isDark ? 'text-white' : 'text-slate-900'}`}>ISO 9001</div>
+              <div className={`text-[10px] sm:text-xs uppercase tracking-wider font-bold mt-1 ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>Certified Unit</div>
             </div>
           </div>
 
@@ -144,19 +172,25 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
 
       {/* PRODUCTS OVERVIEW SECTION */}
       <section className="w-full max-w-[1800px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-24">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 border-b border-[#1C1C1C] pb-6 sm:pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 border-b border-slate-200 dark:border-[#1C1C1C] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center space-x-2 text-[#8BC34A] text-xs font-orbitron font-bold uppercase tracking-widest mb-2">
+            <div className={`flex items-center space-x-2 text-xs font-orbitron font-bold uppercase tracking-widest mb-2 ${
+              isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'
+            }`}>
               <Layers className="w-4 h-4" />
               <span>Industrial Portfolio</span>
             </div>
-            <h2 className="font-orbitron font-black text-2xl sm:text-5xl text-white tracking-wide">
+            <h2 className={`font-orbitron font-black text-2xl sm:text-5xl tracking-wide ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}>
               Core Products & Fuel Supply
             </h2>
           </div>
           <button
             onClick={() => setActivePage('products')}
-            className="mt-3 md:mt-0 inline-flex items-center space-x-2 text-xs font-bold font-orbitron text-[#8BC34A] hover:text-[#9ECC3B] uppercase tracking-wider"
+            className={`mt-3 md:mt-0 inline-flex items-center space-x-2 text-xs font-bold font-orbitron uppercase tracking-wider ${
+              isDark ? 'text-[#8BC34A] hover:text-[#9ECC3B]' : 'text-[#65A30D] hover:text-lime-700'
+            }`}
           >
             <span>View Full Technical Specs</span>
             <ArrowRight className="w-4 h-4" />
@@ -167,7 +201,11 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
           {products.map((item) => (
             <div
               key={item.id}
-              className="metallic-card rounded-2xl sm:rounded-3xl overflow-hidden group flex flex-col justify-between"
+              className={`rounded-2xl sm:rounded-3xl overflow-hidden group flex flex-col justify-between border transition-all ${
+                isDark 
+                  ? 'bg-[#141414] border-[#262626] hover:border-[#8BC34A]/60' 
+                  : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50 hover:border-[#65A30D]'
+              }`}
             >
               {/* Product Image Container */}
               <div className="relative h-44 sm:h-56 overflow-hidden">
@@ -176,7 +214,9 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+                <div className={`absolute inset-0 bg-gradient-to-t ${
+                  isDark ? 'from-[#141414] via-transparent to-transparent' : 'from-white/90 via-transparent to-transparent'
+                }`} />
                 <span className="absolute top-3 right-3 px-2.5 py-1 rounded bg-[#0A0A0A]/85 border border-[#8BC34A]/50 text-[#8BC34A] font-orbitron text-[10px] sm:text-xs font-bold uppercase tracking-wider">
                   {item.badge}
                 </span>
@@ -185,22 +225,28 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
               {/* Product Content */}
               <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-4 sm:space-y-5">
                 <div>
-                  <h3 className="font-orbitron font-extrabold text-base sm:text-xl text-white group-hover:text-[#8BC34A] transition-colors mb-1">
+                  <h3 className={`font-orbitron font-extrabold text-base sm:text-xl transition-colors mb-1 ${
+                    isDark ? 'text-white group-hover:text-[#8BC34A]' : 'text-slate-900 group-hover:text-[#65A30D]'
+                  }`}>
                     {item.name}
                   </h3>
-                  <p className="text-[11px] sm:text-xs font-bold text-[#8BC34A] uppercase tracking-wider mb-2">
+                  <p className={`text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2 ${
+                    isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'
+                  }`}>
                     {item.subtitle}
                   </p>
-                  <p className="text-xs text-gray-300 leading-relaxed">
+                  <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
                     {item.description}
                   </p>
                 </div>
 
                 {/* Specs List */}
-                <div className="bg-[#1C1C1C] p-3 rounded-xl border border-[#262626] space-y-1">
+                <div className={`p-3 rounded-xl border space-y-1 ${
+                  isDark ? 'bg-[#1C1C1C] border-[#262626] text-gray-300' : 'bg-slate-50 border-slate-200 text-slate-700'
+                }`}>
                   {item.specs.map((spec, i) => (
-                    <div key={i} className="flex items-center text-[11px] sm:text-xs text-gray-300 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#8BC34A] mr-2 shrink-0" />
+                    <div key={i} className="flex items-center text-[11px] sm:text-xs font-medium">
+                      <span className={`w-1.5 h-1.5 rounded-full mr-2 shrink-0 ${isDark ? 'bg-[#8BC34A]' : 'bg-[#65A30D]'}`} />
                       <span>{spec}</span>
                     </div>
                   ))}
@@ -210,7 +256,11 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
                   onClick={() => {
                     setActivePage('products');
                   }}
-                  className="w-full py-2.5 sm:py-3 rounded-xl bg-[#262626] border border-[#333] text-white font-orbitron font-bold text-xs uppercase tracking-wider hover:bg-[#8BC34A] hover:text-black transition-all flex items-center justify-center space-x-1.5"
+                  className={`w-full py-2.5 sm:py-3 rounded-xl border font-orbitron font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-1.5 ${
+                    isDark 
+                      ? 'bg-[#262626] border-[#333] text-white hover:bg-[#8BC34A] hover:text-black' 
+                      : 'bg-slate-100 border-slate-300 text-slate-900 hover:bg-[#8BC34A] hover:text-black'
+                  }`}
                 >
                   <span>Product Specs</span>
                   <ChevronRight className="w-4 h-4" />
@@ -223,29 +273,39 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
 
       {/* ABOUT & TRUST OVERVIEW */}
       <section className="w-full max-w-[1800px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center bg-[#121212] border border-[#262626] rounded-2xl sm:rounded-3xl p-6 sm:p-14 relative overflow-hidden">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center border rounded-2xl sm:rounded-3xl p-6 sm:p-14 relative overflow-hidden transition-colors ${
+          isDark ? 'bg-[#121212] border-[#262626]' : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'
+        }`}>
           <div className="space-y-5 sm:space-y-8">
-            <div className="inline-flex items-center space-x-2 text-[#8BC34A] text-xs font-orbitron font-bold uppercase tracking-widest">
+            <div className={`inline-flex items-center space-x-2 text-xs font-orbitron font-bold uppercase tracking-widest ${
+              isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'
+            }`}>
               <Factory className="w-4 h-4" />
               <span>About Shri Shyam & Company</span>
             </div>
 
-            <h2 className="font-orbitron font-black text-2xl sm:text-5xl text-white leading-tight">
+            <h2 className={`font-orbitron font-black text-2xl sm:text-5xl leading-tight ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}>
               Pioneering Industrial Strength & Eco-Green Standards
             </h2>
 
-            <p className="text-xs sm:text-base text-gray-300 leading-relaxed">
+            <p className={`text-xs sm:text-base leading-relaxed ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
               Founded under Shri Shyam & Company, SS Carbon stands as a benchmark in industrial carbon refining and commercial fuel distribution. We empower heavy manufacturing facilities with reliable, unadulterated bulk raw materials.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-[#1A1A1A] p-4 rounded-xl border border-[#262626] space-y-1">
-                <div className="font-orbitron font-bold text-sm sm:text-base text-[#8BC34A]">Reliable Tanker Fleet</div>
-                <p className="text-xs text-gray-400">Guaranteed 24/7 uninterrupted fuel and carbon powder dispatch.</p>
+              <div className={`p-4 rounded-xl border space-y-1 ${
+                isDark ? 'bg-[#1A1A1A] border-[#262626]' : 'bg-slate-50 border-slate-200'
+              }`}>
+                <div className={`font-orbitron font-bold text-sm sm:text-base ${isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`}>Reliable Tanker Fleet</div>
+                <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>Guaranteed 24/7 uninterrupted fuel and carbon powder dispatch.</p>
               </div>
-              <div className="bg-[#1A1A1A] p-4 rounded-xl border border-[#262626] space-y-1">
-                <div className="font-orbitron font-bold text-sm sm:text-base text-[#8BC34A]">Laboratory Tested</div>
-                <p className="text-xs text-gray-400">Every batch issued with Certificate of Analysis (COA).</p>
+              <div className={`p-4 rounded-xl border space-y-1 ${
+                isDark ? 'bg-[#1A1A1A] border-[#262626]' : 'bg-slate-50 border-slate-200'
+              }`}>
+                <div className={`font-orbitron font-bold text-sm sm:text-base ${isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'}`}>Laboratory Tested</div>
+                <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>Every batch issued with Certificate of Analysis (COA).</p>
               </div>
             </div>
 
@@ -260,7 +320,7 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
             </div>
           </div>
 
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#262626] h-64 sm:h-[440px] group">
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-[#262626] h-64 sm:h-[440px] group">
             <img
               src="/assets/industrial_facility.jpg"
               alt="SS Carbon Industrial Plant"
@@ -284,14 +344,16 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
       {/* WHY CHOOSE US */}
       <section className="w-full max-w-[1800px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-24">
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-16 space-y-2.5">
-          <div className="inline-flex items-center space-x-2 text-[#8BC34A] text-xs font-orbitron font-bold uppercase tracking-widest">
+          <div className={`inline-flex items-center space-x-2 text-xs font-orbitron font-bold uppercase tracking-widest ${
+            isDark ? 'text-[#8BC34A]' : 'text-[#65A30D]'
+          }`}>
             <Award className="w-4 h-4" />
             <span>Core Pillars</span>
           </div>
-          <h2 className="font-orbitron font-black text-2xl sm:text-5xl text-white">
+          <h2 className={`font-orbitron font-black text-2xl sm:text-5xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
             Why Factory Leaders Choose SS Carbon
           </h2>
-          <p className="text-xs sm:text-base text-gray-400">
+          <p className={`text-xs sm:text-base ${isDark ? 'text-gray-400' : 'text-slate-600'}`}>
             Engineered for high performance, zero batch variation, and direct commercial pricing.
           </p>
         </div>
@@ -302,15 +364,23 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
             return (
               <div
                 key={idx}
-                className="bg-[#141414] border border-[#262626] p-6 sm:p-8 rounded-2xl sm:rounded-3xl hover:border-[#8BC34A]/60 transition-all group"
+                className={`border p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all group ${
+                  isDark 
+                    ? 'bg-[#141414] border-[#262626] hover:border-[#8BC34A]/60' 
+                    : 'bg-white border-slate-200 shadow-md shadow-slate-200/50 hover:border-[#65A30D]'
+                }`}
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-[#8BC34A]/10 border border-[#8BC34A]/30 flex items-center justify-center text-[#8BC34A] mb-4 sm:mb-6 group-hover:bg-[#8BC34A] group-hover:text-black transition-colors">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-colors ${
+                  isDark ? 'bg-[#8BC34A]/10 border border-[#8BC34A]/30 text-[#8BC34A] group-hover:bg-[#8BC34A] group-hover:text-black' : 'bg-[#8BC34A]/15 border border-[#8BC34A]/40 text-[#65A30D] group-hover:bg-[#8BC34A] group-hover:text-black'
+                }`}>
                   <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="font-orbitron font-bold text-base sm:text-lg text-white mb-2 group-hover:text-[#8BC34A] transition-colors">
+                <h3 className={`font-orbitron font-bold text-base sm:text-lg mb-2 transition-colors ${
+                  isDark ? 'text-white group-hover:text-[#8BC34A]' : 'text-slate-900 group-hover:text-[#65A30D]'
+                }`}>
                   {b.title}
                 </h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-400' : 'text-slate-600'}`}>
                   {b.description}
                 </p>
               </div>
@@ -321,7 +391,11 @@ export default function HomePage({ setActivePage, onOpenQuote }) {
 
       {/* LEAD GENERATION CTA BANNER */}
       <section className="w-full max-w-[1800px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-24">
-        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1C1C1C] via-[#141414] to-[#0A0A0A] border-2 border-[#8BC34A]/60 p-6 sm:p-16 overflow-hidden text-center space-y-5 sm:space-y-8 shadow-2xl shadow-[#8BC34A]/10">
+        <div className={`relative rounded-2xl sm:rounded-3xl border-2 p-6 sm:p-16 overflow-hidden text-center space-y-5 sm:space-y-8 shadow-2xl ${
+          isDark 
+            ? 'bg-gradient-to-br from-[#1C1C1C] via-[#141414] to-[#0A0A0A] border-[#8BC34A]/60 shadow-[#8BC34A]/10' 
+            : 'bg-gradient-to-br from-slate-900 via-slate-800 to-black border-[#8BC34A] text-white shadow-xl'
+        }`}>
           
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#8BC34A]/20 border border-[#8BC34A]/40 text-[#8BC34A] text-[11px] sm:text-xs font-orbitron font-bold uppercase tracking-wider">
             <Sparkles className="w-4 h-4" />
