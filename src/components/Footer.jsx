@@ -18,13 +18,11 @@ export default function Footer({ setActivePage, onOpenQuote }) {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center space-x-3.5">
-              <div className="w-11 h-11 rounded-xl bg-[#141414] border border-[#8BC34A]/50 flex items-center justify-center p-1">
-                <img
-                  src="/assets/brand_logo.png"
-                  alt="SS Carbon Metallic Emblem"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+              <img
+                src="/assets/brand_logo.png"
+                alt="SS Carbon Metallic Emblem"
+                className="w-11 h-11 sm:w-13 sm:h-13 object-contain filter drop-shadow-md"
+              />
               <div>
                 <span className="font-orbitron font-black text-3xl text-white tracking-wider">SS CARBON</span>
                 <p className="text-xs uppercase tracking-widest text-[#8BC34A] font-bold">Shri Shyam & Company</p>
